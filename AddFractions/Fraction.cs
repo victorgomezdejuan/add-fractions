@@ -14,28 +14,39 @@ public class Fraction {
     }
 
     public Fraction Plus(Fraction addend) {
-        if (Numerator == Denominator && addend.Numerator == addend.Denominator)
+        if (NaturalNumbers(this, addend))
             return new Fraction(Numerator + addend.Numerator);
 
-        int numerator = Numerator;
-        int denominator = Denominator;
-        int addendNumerator = addend.Numerator;
-        int addendDenominator = addend.Denominator;
+        Tuple<Fraction, Fraction> tuple = PrepareFractionsForAddition(this, addend);
+        Fraction newAugend = tuple.Item1;
+        Fraction newAddend = tuple.Item2;
 
-        if (Denominator != addend.Denominator) {
-            numerator *= addend.Denominator;
-            denominator *= addend.Denominator;
-            addendNumerator *= Denominator;
-            addendDenominator *= Denominator;
-        }
-
-        int newNumerator = numerator + addendNumerator;
-        int newDenominator = denominator.Equals(addendDenominator) ? denominator : denominator + addendDenominator;
+        int newNumerator = newAugend.Numerator + newAddend.Numerator;
+        int newDenominator = newAugend.Denominator == newAddend.Denominator ? newAugend.Denominator : newAugend.Denominator + newAddend.Denominator;
 
         return Reduce(new Fraction(newNumerator, newDenominator));
     }
 
-    private Fraction Reduce(Fraction fraction) {
+    private static bool NaturalNumbers(Fraction augend, Fraction addend)
+        => augend.Numerator == augend.Denominator && addend.Numerator == addend.Denominator;
+
+    private static Tuple<Fraction, Fraction> PrepareFractionsForAddition(Fraction augend, Fraction addend) {
+        int augendNumerator = augend.Numerator;
+        int augendDenominator = augend.Denominator;
+        int addendNumerator = addend.Numerator;
+        int addendDenominator = addend.Denominator;
+
+        if (augend.Denominator != addend.Denominator) {
+            augendNumerator *= addend.Denominator;
+            augendDenominator *= addend.Denominator;
+            addendNumerator *= augend.Denominator;
+            addendDenominator *= augend.Denominator;
+        }
+
+        return new Tuple<Fraction, Fraction>(new Fraction(augendNumerator, augendDenominator), new Fraction(addendNumerator, addendDenominator));
+    }
+
+    private static Fraction Reduce(Fraction fraction) {
         int numerator = fraction.Numerator;
         int denominator = fraction.Denominator;
         int min = Math.Min(numerator, denominator);
