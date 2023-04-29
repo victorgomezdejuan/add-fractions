@@ -38,14 +38,25 @@ public class AddFractionsTestSuite {
         Assert.NotEqual(augend, addend);
     }
 
-    //[Fact]
-    //public void SameDenominator() {
-    //    Fraction augend = new(2, 5);
-    //    Fraction addend = new(1, 5);
-    //    Fraction expected = new(3, 5);
+    [Fact]
+    public void SameDenominator() {
+        Fraction augend = new(2, 5);
+        Fraction addend = new(1, 5);
+        Fraction expected = new(3, 5);
 
-    //    Fraction sum = augend.Plus(addend);
+        Fraction sum = augend.Plus(addend);
 
-    //    Assert.Equal(expected, sum);
-    //}
+        Assert.Equal(expected, sum);
+    }
+
+    [Fact]
+    public void SameDenominatorWithReduction() {
+        Fraction augend = new(1, 8);
+        Fraction addend = new(3, 8);
+        Fraction expected = new(1, 2);
+
+        Fraction sum = augend.Plus(addend);
+
+        Assert.Equal(expected, sum);
+    }
 }

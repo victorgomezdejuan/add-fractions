@@ -14,7 +14,19 @@ public class Fraction {
     }
 
     public Fraction Plus(Fraction addend) {
-        return new(Numerator + addend.Numerator);
+        int newNumerator = Numerator + addend.Numerator;
+        int newDenominator = Denominator.Equals(addend.Denominator) ? Denominator : Denominator + addend.Denominator;
+
+        int min = Math.Min(newNumerator, newDenominator);
+
+        for (int i = min; i >= 2; i--) {
+            while (newNumerator % i == 0 && newDenominator % i == 0) {
+                newNumerator /= i;
+                newDenominator /= i;
+            }
+        }
+
+        return new(newNumerator, newDenominator);
     }
 
     private bool Equals(Fraction other) {
