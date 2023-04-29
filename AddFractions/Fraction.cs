@@ -17,9 +17,7 @@ public class Fraction {
         if (NaturalNumbers(this, addend))
             return new Fraction(Numerator + addend.Numerator);
 
-        Tuple<Fraction, Fraction> tuple = PrepareFractionsForAddition(this, addend);
-        Fraction newAugend = tuple.Item1;
-        Fraction newAddend = tuple.Item2;
+        (Fraction newAugend, Fraction newAddend) = PrepareFractionsForAddition(this, addend);
 
         int newNumerator = newAugend.Numerator + newAddend.Numerator;
         int newDenominator = newAugend.Denominator == newAddend.Denominator ? newAugend.Denominator : newAugend.Denominator + newAddend.Denominator;
@@ -30,15 +28,14 @@ public class Fraction {
     private static bool NaturalNumbers(Fraction augend, Fraction addend)
         => augend.Numerator == augend.Denominator && addend.Numerator == addend.Denominator;
 
-    private static Tuple<Fraction, Fraction> PrepareFractionsForAddition(Fraction augend, Fraction addend) {
-        if (augend.Denominator == addend.Denominator) {
-            return new Tuple<Fraction, Fraction>(augend.Clone(), addend.Clone());
-        }
+    private static (Fraction, Fraction) PrepareFractionsForAddition(Fraction augend, Fraction addend) {
+        if (augend.Denominator == addend.Denominator)
+            return (augend.Clone(), addend.Clone());
 
-        Fraction newAugend = new Fraction(augend.Numerator * addend.Denominator, augend.Denominator * addend.Denominator);
-        Fraction newAddend = new Fraction(addend.Numerator * augend.Denominator, addend.Denominator * augend.Denominator);
+        Fraction newAugend = new(augend.Numerator * addend.Denominator, augend.Denominator * addend.Denominator);
+        Fraction newAddend = new(addend.Numerator * augend.Denominator, addend.Denominator * augend.Denominator);
 
-        return new Tuple<Fraction, Fraction>(newAugend, newAddend);
+        return (newAugend, newAddend);
     }
 
     private static Fraction Reduce(Fraction fraction) {
