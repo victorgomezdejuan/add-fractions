@@ -1,0 +1,12 @@
+D:\Training\Programming\TDD\Jbrains\AddFractionsTests\AddFractions\bin\Debug\net6.0\AddFractions.deps.json
+D:\Training\Programming\TDD\Jbrains\AddFractionsTests\AddFractions\bin\Debug\net6.0\AddFractions.dll
+D:\Training\Programming\TDD\Jbrains\AddFractionsTests\AddFractions\bin\Debug\net6.0\AddFractions.pdb
+D:\Training\Programming\TDD\Jbrains\AddFractionsTests\AddFractions\obj\Debug\net6.0\AddFractions.csproj.AssemblyReference.cache
+D:\Training\Programming\TDD\Jbrains\AddFractionsTests\AddFractions\obj\Debug\net6.0\AddFractions.GeneratedMSBuildEditorConfig.editorconfig
+D:\Training\Programming\TDD\Jbrains\AddFractionsTests\AddFractions\obj\Debug\net6.0\AddFractions.AssemblyInfoInputs.cache
+D:\Training\Programming\TDD\Jbrains\AddFractionsTests\AddFractions\obj\Debug\net6.0\AddFractions.AssemblyInfo.cs
+D:\Training\Programming\TDD\Jbrains\AddFractionsTests\AddFractions\obj\Debug\net6.0\AddFractions.csproj.CoreCompileInputs.cache
+D:\Training\Programming\TDD\Jbrains\AddFractionsTests\AddFractions\obj\Debug\net6.0\AddFractions.dll
+D:\Training\Programming\TDD\Jbrains\AddFractionsTests\AddFractions\obj\Debug\net6.0\refint\AddFractions.dll
+D:\Training\Programming\TDD\Jbrains\AddFractionsTests\AddFractions\obj\Debug\net6.0\AddFractions.pdb
+D:\Training\Programming\TDD\Jbrains\AddFractionsTests\AddFractions\obj\Debug\net6.0\ref\AddFractions.dll
