@@ -1,17 +1,24 @@
 ﻿namespace AddFractions;
 public class Fraction {
-    public int Number { get; init; }
+    public int Numerator { get; init; }
+    public int Denominator { get; init; }
 
     public Fraction(int number) {
-        Number = number;
+        Numerator = number;
+        Denominator = number;
+    }
+
+    public Fraction(int numerator, int denominator) {
+        Numerator = numerator;
+        Denominator = denominator;
     }
 
     public Fraction Plus(Fraction addend) {
-        return new(Number + addend.Number);
+        return new(Numerator + addend.Numerator);
     }
 
     private bool Equals(Fraction other) {
-        return Number.Equals(other.Number);
+        return Numerator.Equals(other.Numerator) && Denominator.Equals(other.Denominator);
     }
 
     public override bool Equals(object? obj) {
@@ -19,6 +26,6 @@ public class Fraction {
     }
 
     public override int GetHashCode() {
-        return Number.GetHashCode();
+        return Numerator.GetHashCode();
     }
 }
