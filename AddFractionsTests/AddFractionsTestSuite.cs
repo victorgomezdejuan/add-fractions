@@ -59,4 +59,15 @@ public class AddFractionsTestSuite {
 
         Assert.Equal(expected, sum);
     }
+
+    [Fact]
+    public void DifferentDenominatorWithoutReduction() {
+        Fraction augend = new(1, 2);
+        Fraction addend = new(1, 3);
+        Fraction expected = new(5, 6);
+
+        Fraction sum = augend.Plus(addend);
+
+        Assert.Equal(expected, sum);
+    }
 }

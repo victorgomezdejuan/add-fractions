@@ -14,19 +14,40 @@ public class Fraction {
     }
 
     public Fraction Plus(Fraction addend) {
-        int newNumerator = Numerator + addend.Numerator;
-        int newDenominator = Denominator.Equals(addend.Denominator) ? Denominator : Denominator + addend.Denominator;
+        if (Numerator == Denominator && addend.Numerator == addend.Denominator)
+            return new Fraction(Numerator + addend.Numerator);
 
-        int min = Math.Min(newNumerator, newDenominator);
+        int numerator = Numerator;
+        int denominator = Denominator;
+        int addendNumerator = addend.Numerator;
+        int addendDenominator = addend.Denominator;
+
+        if (Denominator != addend.Denominator) {
+            numerator *= addend.Denominator;
+            denominator *= addend.Denominator;
+            addendNumerator *= Denominator;
+            addendDenominator *= Denominator;
+        }
+
+        int newNumerator = numerator + addendNumerator;
+        int newDenominator = denominator.Equals(addendDenominator) ? denominator : denominator + addendDenominator;
+
+        return Reduce(new Fraction(newNumerator, newDenominator));
+    }
+
+    private Fraction Reduce(Fraction fraction) {
+        int numerator = fraction.Numerator;
+        int denominator = fraction.Denominator;
+        int min = Math.Min(numerator, denominator);
 
         for (int i = min; i >= 2; i--) {
-            while (newNumerator % i == 0 && newDenominator % i == 0) {
-                newNumerator /= i;
-                newDenominator /= i;
+            while (numerator % i == 0 && denominator % i == 0) {
+                numerator /= i;
+                denominator /= i;
             }
         }
 
-        return new(newNumerator, newDenominator);
+        return new Fraction(numerator, denominator);
     }
 
     private bool Equals(Fraction other) {
