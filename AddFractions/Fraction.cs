@@ -31,19 +31,14 @@ public class Fraction {
         => augend.Numerator == augend.Denominator && addend.Numerator == addend.Denominator;
 
     private static Tuple<Fraction, Fraction> PrepareFractionsForAddition(Fraction augend, Fraction addend) {
-        int augendNumerator = augend.Numerator;
-        int augendDenominator = augend.Denominator;
-        int addendNumerator = addend.Numerator;
-        int addendDenominator = addend.Denominator;
-
-        if (augend.Denominator != addend.Denominator) {
-            augendNumerator *= addend.Denominator;
-            augendDenominator *= addend.Denominator;
-            addendNumerator *= augend.Denominator;
-            addendDenominator *= augend.Denominator;
+        if (augend.Denominator == addend.Denominator) {
+            return new Tuple<Fraction, Fraction>(augend.Clone(), addend.Clone());
         }
 
-        return new Tuple<Fraction, Fraction>(new Fraction(augendNumerator, augendDenominator), new Fraction(addendNumerator, addendDenominator));
+        Fraction newAugend = new Fraction(augend.Numerator * addend.Denominator, augend.Denominator * addend.Denominator);
+        Fraction newAddend = new Fraction(addend.Numerator * augend.Denominator, addend.Denominator * augend.Denominator);
+
+        return new Tuple<Fraction, Fraction>(newAugend, newAddend);
     }
 
     private static Fraction Reduce(Fraction fraction) {
@@ -71,5 +66,9 @@ public class Fraction {
 
     public override int GetHashCode() {
         return Numerator.GetHashCode();
+    }
+
+    private Fraction Clone() {
+        return new Fraction(Numerator, Denominator);
     }
 }
