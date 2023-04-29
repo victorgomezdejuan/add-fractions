@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddFractionsTests", "AddFractionsTests\AddFractionsTests.csproj", "{063DA853-9508-4F8C-88B4-0AAD351F7AD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddFractionsTests", "AddFractionsTests\AddFractionsTests.csproj", "{063DA853-9508-4F8C-88B4-0AAD351F7AD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddFractions", "AddFractions\AddFractions.csproj", "{826215F1-11D4-47AE-BE95-6F51F65AC49A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddFractions", "AddFractions\AddFractions.csproj", "{826215F1-11D4-47AE-BE95-6F51F65AC49A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1CDA7542-2307-496E-AE0B-F4750C4C55B0}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

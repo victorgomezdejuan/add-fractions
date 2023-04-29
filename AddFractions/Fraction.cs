@@ -11,10 +11,7 @@ public class Fraction : Number {
     public Number Plus(Fraction addend) {
         (Fraction newAugend, Fraction newAddend) = PrepareFractionsForAddition(this, addend);
 
-        int newNumerator = newAugend.Numerator + newAddend.Numerator;
-        int newDenominator = newAugend.Denominator == newAddend.Denominator ? newAugend.Denominator : newAugend.Denominator + newAddend.Denominator;
-
-        return Reduce(new Fraction(newNumerator, newDenominator));
+        return Reduce(new Fraction(newAugend.Numerator + newAddend.Numerator, newAugend.Denominator));
     }
 
     private static (Fraction, Fraction) PrepareFractionsForAddition(Fraction augend, Fraction addend) {
@@ -31,6 +28,10 @@ public class Fraction : Number {
         if (fraction.Numerator % fraction.Denominator == 0)
             return new NaturalNumber(fraction.Numerator / fraction.Denominator);
 
+        return ReduceToFraction(fraction);
+    }
+
+    private static Fraction ReduceToFraction(Fraction fraction) {
         int numerator = fraction.Numerator;
         int denominator = fraction.Denominator;
         int min = Math.Min(numerator, denominator);
