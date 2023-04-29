@@ -4,18 +4,7 @@ namespace AddFractionsTests;
 
 public class AddFractionsTestSuite {
     [Fact]
-    public void AddNaturalNumbers() {
-        Fraction augend = new(2);
-        Fraction addend = new(1);
-        Fraction expected = new(3);
-
-        Fraction sum = augend.Plus(addend);
-
-        Assert.Equal(expected, sum);
-    }
-
-    [Fact]
-    public void EqualFractions() {
+    public void Equals_SameFraction() {
         Fraction augend = new(1, 3);
         Fraction addend = new(1, 3);
 
@@ -23,7 +12,7 @@ public class AddFractionsTestSuite {
     }
 
     [Fact]
-    public void DistinctNumerator() {
+    public void Equals_DistinctNumerator() {
         Fraction augend = new(1, 3);
         Fraction addend = new(2, 3);
 
@@ -31,7 +20,7 @@ public class AddFractionsTestSuite {
     }
 
     [Fact]
-    public void DistinctDenominator() {
+    public void Equals_DistinctDenominator() {
         Fraction augend = new(1, 3);
         Fraction addend = new(1, 2);
 
@@ -39,34 +28,45 @@ public class AddFractionsTestSuite {
     }
 
     [Fact]
-    public void SameDenominator() {
+    public void Addition_SameDenominator() {
         Fraction augend = new(2, 5);
         Fraction addend = new(1, 5);
         Fraction expected = new(3, 5);
 
-        Fraction sum = augend.Plus(addend);
+        Number sum = augend.Plus(addend);
 
         Assert.Equal(expected, sum);
     }
 
     [Fact]
-    public void SameDenominatorWithReduction() {
+    public void Addition_SameDenominatorWithReduction() {
         Fraction augend = new(1, 8);
         Fraction addend = new(3, 8);
         Fraction expected = new(1, 2);
 
-        Fraction sum = augend.Plus(addend);
+        Number sum = augend.Plus(addend);
 
         Assert.Equal(expected, sum);
     }
 
     [Fact]
-    public void DifferentDenominatorWithoutReduction() {
+    public void Addition_DifferentDenominator() {
         Fraction augend = new(1, 2);
         Fraction addend = new(1, 3);
         Fraction expected = new(5, 6);
 
-        Fraction sum = augend.Plus(addend);
+        Number sum = augend.Plus(addend);
+
+        Assert.Equal(expected, sum);
+    }
+
+    [Fact]
+    public void Addition_ResultNaturalNumber2() {
+        Fraction augend = new(3, 2);
+        Fraction addend = new(1, 2);
+        NaturalNumber expected = new(2);
+
+        Number sum = augend.Plus(addend);
 
         Assert.Equal(expected, sum);
     }

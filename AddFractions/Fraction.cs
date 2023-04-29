@@ -1,22 +1,14 @@
 ﻿namespace AddFractions;
-public class Fraction {
+public class Fraction : Number {
     public int Numerator { get; init; }
     public int Denominator { get; init; }
-
-    public Fraction(int number) {
-        Numerator = number;
-        Denominator = number;
-    }
 
     public Fraction(int numerator, int denominator) {
         Numerator = numerator;
         Denominator = denominator;
     }
 
-    public Fraction Plus(Fraction addend) {
-        if (NaturalNumbers(this, addend))
-            return new Fraction(Numerator + addend.Numerator);
-
+    public Number Plus(Fraction addend) {
         (Fraction newAugend, Fraction newAddend) = PrepareFractionsForAddition(this, addend);
 
         int newNumerator = newAugend.Numerator + newAddend.Numerator;
@@ -24,9 +16,6 @@ public class Fraction {
 
         return Reduce(new Fraction(newNumerator, newDenominator));
     }
-
-    private static bool NaturalNumbers(Fraction augend, Fraction addend)
-        => augend.Numerator == augend.Denominator && addend.Numerator == addend.Denominator;
 
     private static (Fraction, Fraction) PrepareFractionsForAddition(Fraction augend, Fraction addend) {
         if (augend.Denominator == addend.Denominator)
@@ -38,7 +27,10 @@ public class Fraction {
         return (newAugend, newAddend);
     }
 
-    private static Fraction Reduce(Fraction fraction) {
+    private static Number Reduce(Fraction fraction) {
+        if (fraction.Numerator % fraction.Denominator == 0)
+            return new NaturalNumber(fraction.Numerator / fraction.Denominator);
+
         int numerator = fraction.Numerator;
         int denominator = fraction.Denominator;
         int min = Math.Min(numerator, denominator);
